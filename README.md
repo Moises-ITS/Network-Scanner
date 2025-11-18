@@ -1,2 +1,27 @@
-# Network-Scanner
-A web-based network scanning tool built with Python and Flask that performs host discovery and service enumeration using Nmap, generates JSON reports, and visualizes results with automated charts. Includes an alerting system, report uploads, downloadable scan outputs, and a clean UI for browsing hosts, services, and findings.
+# 🔍 Flask Network Scanner (Nmap + Real-Time Visuals)
+
+A Python Flask web-based network scanner that uses Nmap to enumerate hosts, open ports, services, and generate alerts + charts. Includes:
+
+- JSON report generation
+- Chart visualizations (Matplotlib)
+- Alert system
+- File upload & report viewer
+- Downloadable scan reports
+- Simple and clean UI (Jinja2 + Bootstrap)
+
+---
+
+## 🚀 Features
+- Network discovery (`-sn`)
+- Service detection (`-sV -T4`)
+- JSON report creation
+- Auto-generated charts:
+  - Top open ports
+  - Protocol distribution
+  - Services per host
+- Alert generation
+- View reports in browser
+- Download report button
+- Upload existing `.json` reports
+
+---
