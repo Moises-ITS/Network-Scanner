@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Report View</h2>
+    <div class="card mb-4">
+        <div>
+            <h2>Report Upload</h2>
+            <form method="GET">
+                <a href="{{ url_for('download_report', filename=filename) }}">
+                    <button type="button">Download Report</button>
+                </a>        
+            </form>
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <strong> Report Metadata </strong>
+        </div class="card-body">
+        <div>
+            <ul>
+                <li>Target: {{ report.meta.Target or report.meta.target }}</li>
+                <li>Start Time: {{ report.meta.Start or report.meta.started }}</li>
+                <li>Duration: {{ report.meta.Duration or report.meta.duration }} seconds</li>
+                <li>Nmap Version: {{ report.meta.Nmap_Version or report.meta.nmap_version }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header"><Strong>Services</Strong></div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Host</th>
+                        <th>Protocol</th>
+                        <th>Port</th>
+                        <th>Name</th>
+                        <th>State</th>
+                        <th>Product</th>
+                        <th>Version</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for service in services %}
+                    <tr>
+                        <td>{{ service.host }}</td>
+                        <td>{{ service.protocol }}</td>
+                        <td>{{ service.port }}</td>
+                        <td>{{ service.name }}</td>
+                        <td>{{ service.state }}</td>
+                        <td>{{ service.product }}</td>
+                        <td>{{ service.version }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% if alerts %}
+    <div class="card mb-4">
+        <div class="card-header"><strong>Alerts</strong></div>
+        <div class="card-body">
+            <ul>
+                {% for alert in alerts %}
+                <li> {{ alert.message or alert }} </li>
+                {% endfor %}
+            </ul>
+            {% if alerts_file %}
+            <a href="{{ url_for('download', filename=alerts_file) }}" class="btn btn-primary mt-2">Download Alerts JSON</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if charts %}
+    <div class="card mb-4">
+        <div class="card-header"><strong>Charts</strong></div>
+        <div class="card-body">
+            {% for name, chart in charts.items() %}
+            <h5>{{ name }}</h5>
+            <img src="{{ url_for('static', filename=chart) }}" class="img-fluid mb-2" alt="{{ name }}">
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}
