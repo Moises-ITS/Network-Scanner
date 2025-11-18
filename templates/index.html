@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="card">
+    <h2>Network Scanner Dashboard</h2>
+    <p>Welcome! Use the navigation bar to run scans, view reports, and upload files.</p>
+
+    <h3>Recent Reports</h3>
+    <ul>
+    {% for report in reports %}
+        <li>
+            <a href="{{ url_for('report_view', filename=report) }}">
+                {{ report }}
+            </a>
+        </li>
+    {% else %}
+        <li>No reports yet.</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}
