@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <h2>Upload Report</h2>
+     <form action="{{ url_for('report_upload') }}" method="POST" enctype="multipart/form-data">
+        <label for="file">Select JSON report: </label>
+        <input type="file" id="file" name="file" accept=".json" required>
+        <button type="submit">Upload</button>
+     </form>
+</div>
+{% endblock %}
