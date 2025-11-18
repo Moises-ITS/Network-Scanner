@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "type": "discovery",
+    "target": "192.168.1.0/24",
+    "started": "2025-11-16 11:22:59",
+    "duration": 415.69,
+    "nmap_version": [
+      7,
+      98
+    ]
+  },
+  "hosts": [
+    "192.168.1.1",
+    "192.168.1.153",
+    "192.168.1.154"
+  ],
+  "services": [
+    {
+      "host": "192.168.1.1",
+      "protocol": "tcp",
+      "port": 53,
+      "name": "domain",
+      "state": "open",
+      "product": "cloudflare public dns",
+      "version": "",
+      "extrainfo": ""
+    },
+    {
+      "host": "192.168.1.1",
+      "protocol": "tcp",
+      "port": 80,
+      "name": "http",
+      "state": "open",
+      "product": "",
+      "version": "",
+      "extrainfo": ""
+    },
+    {
+      "host": "192.168.1.1",
+      "protocol": "tcp",
+      "port": 443,
+      "name": "https",
+      "state": "open",
+      "product": "",
+      "version": "",
+      "extrainfo": ""
+    }
+  ]
+}
